@@ -17,6 +17,7 @@ pipeline {
             agent any
             steps {
                 sh 'ls -la'
+                sh 'docker images'
                 sh 'chmod +x ./Image_test.sh'
                 sh './Image_test.sh'
             }
