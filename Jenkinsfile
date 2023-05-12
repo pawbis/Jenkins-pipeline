@@ -16,7 +16,7 @@ pipeline {
         stage("Testing if image exists") {
             agent any
             steps {
-                sh '''
+                sh '''#!/bin/sh
                     if [[ "$(docker images jenkins/python 2> /dev/null)" == "" ]]; then
                         echo "Docker Image exists!" >&2
                     fi
