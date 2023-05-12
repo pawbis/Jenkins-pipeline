@@ -10,7 +10,7 @@ pipeline {
         stage("Building the Docker Image!") {
             agent any 
             steps {
-                sh 'docker build -t Jenkins/Python:1.0 .'
+                sh 'docker build -t jenkins/python:1.0 .'
             }
         }
     }
