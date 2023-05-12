@@ -26,5 +26,12 @@ pipeline {
                 sh 'docker container run jenkins/python:1.0'
             }
         }
+        stage("Pushing working image to repository") {
+            withCredentials([usernamePassword(credentialsId: 'Dockerhub', passwordVariable: 'DockerhubPassword', usernameVariable: 'DockerhubUser')]) {
+                sh "docker login -u ${env.DockerhubUser} -p ${env.DockerhubUser}"
+            sh 'docker tag jenkins/python:1.0 pawbis/jenkins:1.0'
+            sh 'docker push pawbis/jenkins:1.0'
+            }
+        }
     }
 }
