@@ -28,11 +28,11 @@ pipeline {
         }
         stage("Pushing working image to repository") {
             agent any
-                steps {
-                    withCredentials([usernamePassword(credentialsId: 'Dockerhub', passwordVariable: 'DockerhubPassword', usernameVariable: 'DockerhubUser')]) {
-                        sh 'docker login -u ${env.DockerhubUser} -p ${env.DockerhubUser}'
-                    //sh 'docker tag jenkins/python:1.0 pawbis/jenkins:1.0'
-                    sh 'docker push pawbis/jenkins:1.0'
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'Dockerhub', passwordVariable: 'DockerhubPassword', usernameVariable: 'DockerhubUser')]) {
+                    sh "docker login -u ${env.DockerhubUser} -p ${env.DockerhubPassword}"
+                //sh 'docker tag jenkins/python:1.0 pawbis/jenkins:1.0'
+                sh 'docker push pawbis/jenkins:1.0'
                 }
             }
         }
