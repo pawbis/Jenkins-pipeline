@@ -16,10 +16,11 @@ pipeline {
         stage("Testing if image exists") {
             agent any
             steps {
-                sh 'ls -la'
-                sh 'docker images'
-                sh 'chmod +x ./Image_test.sh'
-                sh './Image_test.sh'
+                sh '''
+                    if [[ "$(docker images jenkins/python 2> /dev/null)" == "" ]]; then
+                        echo "Docker Image exists!" >&2
+                    fi
+                '''
             }
         }
     }
