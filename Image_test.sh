@@ -1,5 +1,5 @@
 #! /bin/bash
 
 if [[ "$(docker images jenkins/python 2> /dev/null)" == "" ]]; then
-    echo "Docker Image exists!"
+    echo "Docker Image exists!" >&2
 fi
