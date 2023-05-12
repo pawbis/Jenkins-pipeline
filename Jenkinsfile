@@ -16,6 +16,7 @@ pipeline {
         stage("Testing if image exists") {
             agent any
             steps {
+                sh 'ls -la'
                 sh 'chmod +x ./Image_test.sh'
                 sh './Image_test.sh'
             }
